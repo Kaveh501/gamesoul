@@ -2,27 +2,31 @@ import random
 
 
 def guess_the_number():
-    print("🎮 بازی حدس عدد 🎮")
-    print("یک عدد بین ۱ تا ۱۰۰ انتخاب شده، آن را حدس بزن!")
-
-    secret_number = random.randint(1, 100)
+    # Generate a random number between 1 and 100
+    number_to_guess = random.randint(1, 100)
     attempts = 0
+
+    print("Welcome to 'Guess the Number' game!")
+    print("I'm thinking of a number between 1 and 100.")
 
     while True:
         try:
-            guess = int(input("حدس بزن (۱ تا ۱۰۰): "))
+            # Ask the player for their guess
+            player_guess = int(input("Enter your guess: "))
             attempts += 1
 
-            if guess < secret_number:
-                print("🔻 عدد بزرگ‌تر است!")
-            elif guess > secret_number:
-                print("🔺 عدد کوچک‌تر است!")
+            # Check if the guess is too high, too low, or correct
+            if player_guess < number_to_guess:
+                print("Too low! Try again.")
+            elif player_guess > number_to_guess:
+                print("Too high! Try again.")
             else:
                 print(
-                    f"🎉 تبریک! عدد {secret_number} را در {attempts} تلاش حدس زدی!")
+                    f"Congratulations! You've guessed the number {number_to_guess} in {attempts} attempts.")
                 break
+
         except ValueError:
-            print("⚠️ لطفاً یک عدد معتبر وارد کن.")
+            print("Please enter a valid number!")
 
 
 if __name__ == "__main__":
